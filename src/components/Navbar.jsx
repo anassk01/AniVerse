@@ -6,7 +6,9 @@ function Navbar() {
       <NavLink to="/" className="navbar-logo" end>
         AniVerse
       </NavLink>
-      <div className="navbar-links"></div>
+      <div className="navbar-links">
+        <NavLink to="/anime">Anime</NavLink>
+      </div>
     </nav>
   );
 }
