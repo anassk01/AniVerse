@@ -1,4 +1,4 @@
-// json-server calls (localhost:3001) - run with: npm run server
+// json-server (localhost:3001) - npm run server
 const BASE_URL = "http://localhost:3001";
 
 async function request(url, options) {
@@ -6,7 +6,7 @@ async function request(url, options) {
   if (!res.ok) {
     throw new Error(`Local server request failed (${res.status})`);
   }
-  // delete comes back empty, don't let .json() choke on it
+  // delete body is empty
   const text = await res.text();
   return text ? JSON.parse(text) : null;
 }

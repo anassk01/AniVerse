@@ -234,3 +234,97 @@ select {
   gap: 16px;
   margin-top: 24px;
 }
+
+/* anime detail */
+
+.back-link {
+  display: inline-block;
+  margin-bottom: 16px;
+  color: var(--text-muted);
+}
+
+.detail-tabs {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 24px;
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 8px;
+}
+
+.anime-detail-main {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+@media (min-width: 768px) {
+  .anime-detail-main {
+    flex-direction: row;
+  }
+  .anime-detail-image {
+    width: 280px;
+    flex-shrink: 0;
+    border-radius: var(--radius);
+  }
+}
+
+.anime-detail-image {
+  border-radius: var(--radius);
+}
+
+.anime-meta-list li {
+  margin-bottom: 6px;
+}
+
+.trailer-wrapper {
+  position: relative;
+  padding-top: 56.25%;
+  margin-top: 16px;
+}
+
+.trailer-wrapper iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+  border-radius: var(--radius);
+}
+
+.anime-detail-actions {
+  margin-top: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.library-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+}
+
+/* forms */
+
+.rating-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.rating-form label {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  color: var(--text-muted);
+}
+
+.rating-form input,
+.rating-form textarea {
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text);
+}

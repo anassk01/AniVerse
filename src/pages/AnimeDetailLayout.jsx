@@ -3,8 +3,7 @@ import { Link, Outlet, useParams } from "react-router-dom";
 import { getAnimeById } from "../api/jikan";
 import { Loader, ErrorMessage, EmptyState } from "../components/StatusUI";
 
-// parent route for /anime/:id - fetch the anime once here and pass it down
-// to the child route via <Outlet context> so we don't fetch it twice
+// fetch anime once, pass to child via Outlet
 function AnimeDetailLayout() {
   const { id } = useParams();
   const [anime, setAnime] = useState(null);
@@ -25,7 +24,7 @@ function AnimeDetailLayout() {
       }
     }
     loadAnime();
-  }, [id]); // re-run when :id changes
+  }, [id]);
 
   if (loading) return <Loader label="Loading anime..." />;
   if (error) return <ErrorMessage message={error} />;

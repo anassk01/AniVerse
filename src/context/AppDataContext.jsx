@@ -1,8 +1,6 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import { getAll, createItem, updateItem, deleteItem } from "../api/localApi";
 
-// shared favorites/ratings/library state so any component can read it
-// via useAppData() with no prop drilling
 const AppDataContext = createContext();
 
 export function AppDataProvider({ children }) {
@@ -12,7 +10,7 @@ export function AppDataProvider({ children }) {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  // load all 3 collections once on mount
+  // load once
   useEffect(() => {
     async function loadAll() {
       try {
@@ -48,7 +46,7 @@ export function AppDataProvider({ children }) {
       await deleteItem("favorites", existing.id);
       setFavorites(favorites.filter((f) => f.id !== existing.id));
     } else {
-      // store a copy of the fields we display so lists don't need extra calls
+      // keep displayed fields
       const newFavorite = {
         mal_id: anime.mal_id,
         title: anime.title,
@@ -67,7 +65,7 @@ export function AppDataProvider({ children }) {
     return ratings.find((r) => r.mal_id === malId) ?? null;
   }
 
-  // create a new rating, or update the existing one for this anime
+  // create or update
   async function saveRating(anime, ratingValue, comment) {
     const existing = getRatingForAnime(anime.mal_id);
 
@@ -99,7 +97,6 @@ export function AppDataProvider({ children }) {
     return library.find((l) => l.mal_id === malId) ?? null;
   }
 
-  // add with a status, or just change the status if already there
   async function setLibraryStatus(anime, status) {
     const existing = getLibraryEntry(anime.mal_id);
 

@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-// initialRating/initialComment let the same form create AND edit a rating
+// used for both create and edit
 function RatingForm({ initialRating = 5, initialComment = "", onSave }) {
   const [rating, setRating] = useState(initialRating);
   const [comment, setComment] = useState(initialComment);
