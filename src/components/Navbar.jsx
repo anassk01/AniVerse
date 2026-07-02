@@ -9,6 +9,8 @@ function Navbar() {
       <div className="navbar-links">
         <NavLink to="/anime">Anime</NavLink>
         <NavLink to="/characters">Characters</NavLink>
+        <NavLink to="/favorites">Favorites</NavLink>
+        <NavLink to="/my-ratings">My Ratings</NavLink>
       </div>
     </nav>
   );

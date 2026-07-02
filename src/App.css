@@ -352,3 +352,35 @@ select {
 .anime-appearances-list li {
   margin-bottom: 8px;
 }
+
+/* ratings list */
+
+.ratings-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.rating-item {
+  display: flex;
+  gap: 16px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 16px;
+}
+
+.rating-item img {
+  width: 80px;
+  border-radius: 8px;
+  flex-shrink: 0;
+}
+
+.rating-item-body {
+  flex: 1;
+}
+
+.rating-item-actions {
+  display: flex;
+  gap: 8px;
+}

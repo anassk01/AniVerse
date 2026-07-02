@@ -9,6 +9,8 @@ import AnimeDetail from "./pages/AnimeDetail";
 import AnimeCharacters from "./pages/AnimeCharacters";
 import CharactersList from "./pages/CharactersList";
 import CharacterProfile from "./pages/CharacterProfile";
+import Favorites from "./pages/Favorites";
+import MyRatings from "./pages/MyRatings";
 
 function App() {
   return (
@@ -28,6 +30,9 @@ function App() {
 
             <Route path="/characters" element={<CharactersList />} />
             <Route path="/characters/:id" element={<CharacterProfile />} />
+
+            <Route path="/favorites" element={<Favorites />} />
+            <Route path="/my-ratings" element={<MyRatings />} />
           </Routes>
         </main>
       </BrowserRouter>
