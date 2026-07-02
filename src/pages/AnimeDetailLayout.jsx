@@ -37,6 +37,13 @@ function AnimeDetailLayout() {
       </Link>
       <h1>{anime.title}</h1>
 
+      <nav className="detail-tabs">
+        <Link to="" end="true">
+          Overview
+        </Link>
+        <Link to="characters">View Characters</Link>
+      </nav>
+
       <Outlet context={{ anime }} />
     </div>
   );

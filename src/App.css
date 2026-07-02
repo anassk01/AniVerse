@@ -328,3 +328,27 @@ select {
   background: var(--surface);
   color: var(--text);
 }
+
+/* character profile */
+
+.character-profile {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: 24px;
+}
+
+.character-profile img {
+  width: 160px;
+  border-radius: var(--radius);
+}
+
+.character-profile > div {
+  flex: 1;
+  min-width: 200px;
+}
+
+.anime-appearances-list li {
+  margin-bottom: 8px;
+}
