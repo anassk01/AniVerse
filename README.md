@@ -1,16 +1,61 @@
-# React + Vite
+# AniVerse
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+A React SPA for discovering anime (via the Jikan API) and managing a personal
+collection (favorites, ratings, library) persisted through json-server.
 
-Currently, two official plugins are available:
+## Setup
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+```
+npm install
+```
 
-## React Compiler
+## Running the app
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+You need **two terminals running at the same time**:
 
-## Expanding the Oxlint configuration
+**Terminal 1 - the local database (json-server):**
+```
+npm run server
+```
+This serves `db.json` at `http://localhost:3001` with 3 resources:
+`/favorites`, `/ratings`, `/library`.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and Oxlint's TypeScript related rules in your project.
+**Terminal 2 - the React app:**
+```
+npm run dev
+```
+Open the URL Vite prints (usually `http://localhost:5173`).
+
+> The app will still load and browse anime without json-server running -
+> only favorites/ratings/library actions need it. If it's not running,
+> those pages will show a clear error message instead of crashing.
+
+## Project structure
+
+```
+src/
+  api/
+    jikan.js       - all calls to the Jikan API (external anime data)
+    localApi.js     - GET/POST/PUT/DELETE helpers for json-server
+  context/
+    AppDataContext.jsx  - favorites/ratings/library state, shared app-wide via Context
+  components/
+    Navbar, Card, AnimeCard, CharacterCard, Pagination,
+    SearchBar, RatingForm, StatusUI (Loader/ErrorMessage/EmptyState)
+  pages/
+    Landing, AnimeList, AnimeDetailLayout + AnimeDetail + AnimeCharacters
+    (nested routes), CharactersList, CharacterProfile,
+    Favorites, MyRatings, MyLibrary, Dashboard
+```
+
+## Notes
+
+- Every API call (Jikan or local) follows the same loading / error / empty
+  pattern - look at any page component for the shape.
+- `/anime/:id` and `/anime/:id/characters` are nested routes sharing one
+  layout (`AnimeDetailLayout`) - the anime is fetched once and passed to
+  both child routes via `<Outlet context={{ anime }} />` +
+  `useOutletContext()`.
+- Favorites/ratings/library records store a copy of the anime's title/image
+  (and genres, for favorites) at the time they're saved, so pages like
+  Favorites/Dashboard don't need extra API calls just to display a list.
