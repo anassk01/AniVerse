@@ -12,6 +12,7 @@ function Navbar() {
         <NavLink to="/favorites">Favorites</NavLink>
         <NavLink to="/my-library">My Library</NavLink>
         <NavLink to="/my-ratings">My Ratings</NavLink>
+        <NavLink to="/dashboard">Dashboard</NavLink>
       </div>
     </nav>
   );

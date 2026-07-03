@@ -12,6 +12,7 @@ import CharacterProfile from "./pages/CharacterProfile";
 import Favorites from "./pages/Favorites";
 import MyRatings from "./pages/MyRatings";
 import MyLibrary from "./pages/MyLibrary";
+import Dashboard from "./pages/Dashboard";
 
 function App() {
   return (
@@ -35,6 +36,7 @@ function App() {
             <Route path="/favorites" element={<Favorites />} />
             <Route path="/my-ratings" element={<MyRatings />} />
             <Route path="/my-library" element={<MyLibrary />} />
+            <Route path="/dashboard" element={<Dashboard />} />
           </Routes>
         </main>
       </BrowserRouter>
