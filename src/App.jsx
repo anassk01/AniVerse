@@ -11,6 +11,7 @@ import CharactersList from "./pages/CharactersList";
 import CharacterProfile from "./pages/CharacterProfile";
 import Favorites from "./pages/Favorites";
 import MyRatings from "./pages/MyRatings";
+import MyLibrary from "./pages/MyLibrary";
 
 function App() {
   return (
@@ -33,6 +34,7 @@ function App() {
 
             <Route path="/favorites" element={<Favorites />} />
             <Route path="/my-ratings" element={<MyRatings />} />
+            <Route path="/my-library" element={<MyLibrary />} />
           </Routes>
         </main>
       </BrowserRouter>
