@@ -243,14 +243,6 @@ select {
   color: var(--text-muted);
 }
 
-.detail-tabs {
-  display: flex;
-  gap: 16px;
-  margin-bottom: 24px;
-  border-bottom: 1px solid var(--border);
-  padding-bottom: 8px;
-}
-
 .anime-detail-main {
   display: flex;
   flex-direction: column;

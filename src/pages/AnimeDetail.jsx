@@ -1,4 +1,4 @@
-import { useOutletContext } from "react-router-dom";
+import { Link, useOutletContext } from "react-router-dom";
 import { useAppData } from "../context/AppDataContext";
 import RatingForm from "../components/RatingForm";
 
@@ -86,6 +86,10 @@ function AnimeDetail() {
             </button>
           ))}
         </div>
+
+        <Link to="characters" className="btn">
+          View Characters →
+        </Link>
       </div>
 
       <div className="section">

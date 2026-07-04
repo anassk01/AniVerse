@@ -22,7 +22,7 @@ export function AppDataProvider({ children }) {
         setFavorites(favData);
         setRatings(ratingData);
         setLibrary(libraryData);
-      } catch (err) {
+      } catch {
         setError(
           "Could not reach the local server. Make sure json-server is running (npm run server)."
         );
