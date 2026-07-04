@@ -1,5 +1,5 @@
-// local caching proxy (npm run jikan) - falls back to disk when jikan is down
-const BASE_URL = "http://localhost:3002/v4";
+// self-hosted jikan (docker, ../jikan-rest) on :8081
+const BASE_URL = "http://localhost:8081/v4";
 
 // bad status -> throw
 async function getJson(url) {
