@@ -15,13 +15,17 @@ function Landing() {
       setLoading(true);
       setError(null);
       try {
-        // fire together
-        const [topRes, seasonRes] = await Promise.all([
+        // fire together, but don't let one dead endpoint kill the other
+        const [topRes, seasonRes] = await Promise.allSettled([
           getTopAnime(6),
           getSeasonNow(6),
         ]);
-        setTrending(topRes.data);
-        setSeasonal(seasonRes.data);
+        if (topRes.status === "fulfilled") setTrending(topRes.value.data);
+        if (seasonRes.status === "fulfilled") setSeasonal(seasonRes.value.data);
+        // only hard-fail if both are down
+        if (topRes.status === "rejected" && seasonRes.status === "rejected") {
+          setError(topRes.reason.message);
+        }
       } catch (err) {
         setError(err.message);
       } finally {
